@@ -5,9 +5,9 @@ const App = defineComponent({
   name: 'App',
   data() {
     return {
-      counter: 0
-    };        
-  },  
-});    
- const app = createApp(App);
- const vm = app.mount('#app');
+      counter: 0,
+    };
+  },
+});
+const app = createApp(App);
+const vm = app.mount('#app');
