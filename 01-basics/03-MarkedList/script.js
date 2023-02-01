@@ -34,17 +34,19 @@ const App = defineComponent({
   name: 'App',
   data() {
     return {
-      emails,
       search: '',
     };
   },
   computed: {
     filteredArray() {
-      const searchFilter = (item) => item.toLowerCase().includes(this.search.toLowerCase());
-
-      return this.emails.filter((item) => searchFilter(item));
-    },
-  },
+      return emails.map(email => {
+        return {
+          value: email,
+          mark: this.search && email.includes(this.search)
+        }
+      });
+    }
+  }
 });
 const app = createApp(App);
 const vm = app.mount('#app');

@@ -25,9 +25,9 @@ const App = defineComponent({
   },
   watch: {
     meetupId: {
-      handler(newValue, oldValue) {
-        this.title = fetchMeetupById(newValue, oldValue).then((data) => {
-          this.title = data.title;
+      handler(Value) {
+        fetchMeetupById(Value).then((data) => {
+        this.title = data.title;
         });
       },
     },
