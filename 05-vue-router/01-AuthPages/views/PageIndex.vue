@@ -1,7 +1,7 @@
 <template>
   <UiContainer>
     <h2 class="title">IndexPage</h2>
-    Для проверки: <RouterLink to="/login?from=/">/login?from=/</RouterLink>
+    Для проверки: <router-link to="/login?from=/">/login?from=/</router-link>
   </UiContainer>
 </template>
 
