@@ -80,7 +80,7 @@ import UiImageUploader from '../../../06-wrappers/05-UiImageUploader/components/
 import UiInput from './UiInput.vue';
 import UiInputDate from '../../../06-wrappers/06-UiInputDate/components/UiInputDate';
 import { createAgendaItem } from '../meetupService.js';
-import cloneDeep from 'lodash/clonedeep';
+import { cloneDeep } from 'lodash-es';
 
 export default {
   name: 'MeetupForm',
