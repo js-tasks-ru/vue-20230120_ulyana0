@@ -1,13 +1,56 @@
 <template>
-  <UiInput />
+  <UiInput :modelValue="value" v-bind="$attrs" :type="type" @change="handleInput">
+    <template v-for="slotName in Object.keys($slots)" #[slotName]>
+      <slot :name="slotName" />
+    </template>
+  </UiInput>
 </template>
 
 <script>
 import UiInput from './UiInput.vue';
+import moment from 'moment';
 
 export default {
   name: 'UiInputDate',
-
   components: { UiInput },
+  inheritAttrs: false,
+
+  props: {
+    type: {
+      type: String,
+      default: 'date',
+    },
+    modelValue: {
+      type: String,
+    },
+    step: {
+      type: [Number],
+    },
+  },
+  emits: ['update:modelValue'],
+
+  computed: {
+    value() { 
+      if (!this.modelValue) return '';      
+
+      const dayWrapper = moment(this.modelValue).utc();
+
+      switch (this.type) {
+        case 'date':
+          return dayWrapper.format('YYYY-MM-DD');
+        case 'time':
+          return dayWrapper.format('HH:mm');
+        case 'datetime-local':
+          return dayWrapper.format('YYYY-MM-DDTHH:mm');        
+        default:
+          return '';
+      }
+    },
+  },
+  methods: {
+    handleInput(e) {
+      this.$emit('update:modelValue', e.target.valueAsNumber);
+    },
+  },
 };
 </script>

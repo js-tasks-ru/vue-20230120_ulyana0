@@ -67,4 +67,14 @@ const router = createRouter({
 // Используем beforeEach гард, чтобы проверять пользователя перед каждым переходом
 router.beforeEach(authGuard);
 
+// router.beforeEach((to) => { 
+//   if (to.meta.requireAuth && !isAuthenticated()) {
+//     return { name: 'login', query: { from: to.fullPath } };
+//   }
+//   else if (to.meta.requireGuest && isAuthenticated()) {
+//     return { name: 'index' };
+//   } 
+//   return true;  
+//  });
+
 export { router };
